@@ -29,9 +29,9 @@ warnings.filterwarnings('ignore')
 
 import paddle
 
-from ppdet.core.workspace import load_config, merge_config
-from ppdet.utils.check import check_gpu, check_version, check_config
-from ppdet.utils.cli import ArgsParser
+from static.ppdet.core.workspace import load_config, merge_config
+from static.ppdet.utils.check import check_gpu, check_version, check_config
+from static.ppdet.utils.cli import ArgsParser
 from ppdet.engine import Trainer
 from ppdet.slim import build_slim_model
 

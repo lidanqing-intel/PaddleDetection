@@ -1,6 +1,6 @@
 architecture: RetinaNet
 max_iters: 90000
-use_gpu: true
+use_gpu: false
 pretrain_weights: https://paddle-imagenet-models-name.bj.bcebos.com/ResNet50_cos_pretrained.tar
 weights: output/retinanet_r50_fpn_1x/model_final
 log_iter: 20
@@ -71,19 +71,19 @@ OptimizerBuilder:
     type: L2
 
 _READER_: 'faster_fpn_reader.yml'
-TrainReader:
+TrainDataset:
   batch_size: 2
   batch_transforms:
   - !PadBatch
     pad_to_stride: 128
 
-EvalReader:
+EvalDataset:
   batch_size: 2
   batch_transforms:
   - !PadBatch
     pad_to_stride: 128
 
-TestReader:
+TestDataset:
   batch_size: 1
   batch_transforms:
   - !PadBatch

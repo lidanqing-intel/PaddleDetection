@@ -210,9 +210,8 @@ def create(cls_or_name, **kwargs):
     assert type(cls_or_name) in [type, str
                                  ], "should be a class or name of a class"
     name = type(cls_or_name) == str and cls_or_name or cls_or_name.__name__
-    assert name in global_config and \
-        isinstance(global_config[name], SchemaDict), \
-        "the module {} is not registered".format(name)
+    # assert name in global_config and  isinstance(global_config[name], SchemaDict), "the module {} is not registered".format(name)
+    assert name in global_config, "the module {} is not registered".format(name)
     config = global_config[name]
     cls = getattr(config.pymodule, name)
     cls_kwargs = {}
