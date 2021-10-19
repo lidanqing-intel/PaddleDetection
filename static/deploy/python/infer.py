@@ -188,7 +188,6 @@ class Detector(object):
             t1 = time.time()
             for i in range(repeats):
                 profiler.start_profiler("All")
-                print("Fasle False False False False False")
                 self.predictor.zero_copy_run()
                 profiler.stop_profiler("total", "profile")
                 output_names = self.predictor.get_output_names()
@@ -433,6 +432,7 @@ def load_predictor(model_dir,
         if enable_mkldnn:
             config.set_mkldnn_cache_capacity(0)
             config.enable_mkldnn()
+            config.pass_builder().append_pass("interpolate_mkldnn_pass")
     if run_mode in precision_map.keys():
         config.enable_tensorrt_engine(
             workspace_size=1 << 10,
